@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Ticker</title>
+</head>
+<style>
+	section.ticker{
+		position: relative;
+		overflow: hidden;
+		width: 700px;
+		height: 30px;
+		border: 2px solid;
+	}
+	ul#listLink{
+		position: absolute;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		line-height: 1.5;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	ul#listLink > li{
+		display: inline-block;
+	}
+	ul#listLink > li > a{
+		text-decoration: none;
+		padding:0 8px;
+		color: #333;
+	}
+</style>
+<body>
+
+	<section class="ticker">
+		<ul id="listLink">
+			<li><a href="#">Первая ссылка</a></li>
+			<li><a href="#">Вторая ссылка</a></li>
+			<li><a href="#">Третья ссылка</a></li>
+		</ul>
+	</section>
+
+<script>
+"use strict";
+
+function counter(){
+	var counter = 0;
+	return function(){
+		if(counter > 700){
+			counter = -420;
+		}
+		return counter++;
+	}
+}
+var count = counter();
+
+
+setInterval(function moveTicker(){
+	listLink.style.left = count() + 'px';
+}, 10);
+
+
+</script>
+</body>
+</html>
